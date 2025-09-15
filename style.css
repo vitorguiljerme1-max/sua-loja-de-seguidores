@@ -16,7 +16,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-top: 90px; /* ajustado para header fixo */
+    padding-top: 110px; /* espaço suficiente para header fixo */
 }
 
 /* cores personalizadas */
@@ -44,7 +44,7 @@ body {
     border-bottom: 1px solid #222;
 }
 
-.topo .logo h1 {
+.topo h1 {
     font-size: 20px;
     color: #ff06a0;
 }
@@ -75,7 +75,6 @@ main.container {
     justify-content: flex-start;
     text-align: center;
     width: 100%;
-    min-height: calc(100vh - 90px);
     padding: 20px;
 }
 
@@ -92,26 +91,6 @@ main.container p {
     font-size: 16px;
     line-height: 1.4;
     margin: 3px 0;
-}
-
-/* Área de logo e botão */
-.logo-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.logo-area a {
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--cor-titulo);
-    text-align: center;
-    transition: 0.3s;
-}
-
-.logo-area a:hover {
-    color: #fff;
 }
 
 /* Botão gradiente */
@@ -132,7 +111,7 @@ main.container p {
     opacity: 0.85;
 }
 
-/* Slideshow centralizado */
+/* Slideshow animado */
 .slideshow {
     width: 80%;
     max-width: 500px;
@@ -146,18 +125,24 @@ main.container p {
 
 .slideshow img {
     width: 100%;
-    height: auto;           /* altura proporcional */
-    object-fit: contain;    /* mantém imagem inteira */
-    position: relative;     
-    opacity: 1;
+    height: auto;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation: fade 12s infinite;
 }
 
-/* Produtos e carrinho wrapper */
-.shop-wrapper {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    width: 100%;
+.slideshow img:nth-child(1) { animation-delay: 0s; }
+.slideshow img:nth-child(2) { animation-delay: 4s; }
+.slideshow img:nth-child(3) { animation-delay: 8s; }
+
+@keyframes fade {
+    0%, 8% { opacity: 0; }
+    8%, 33% { opacity: 1; }
+    33%, 41% { opacity: 0; }
+    100% { opacity: 0; }
 }
 
 /* Produtos em grid */
@@ -165,7 +150,7 @@ main.container p {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
-    flex: 3;
+    width: 100%;
 }
 
 /* Cards dos produtos */
@@ -213,12 +198,12 @@ main.container p {
 
 /* Carrinho */
 .cart {
-    background-color: #000000;
+    background-color: #000;
     padding: 15px;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    flex: 1;
-    height: fit-content;
+    width: 100%;
+    margin-top: 20px;
 }
 
 #cart-items {
@@ -229,7 +214,7 @@ main.container p {
 
 #cart-items li {
     padding: 5px 0;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid #fff;
 }
 
 #checkout {
@@ -237,7 +222,7 @@ main.container p {
     padding: 10px;
     width: 100%;
     background-color: #25D366;
-    color: #000000;
+    color: #000;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -261,7 +246,7 @@ main.container p {
 /* Responsivo */
 @media screen and (max-width: 768px) {
     body {
-        padding-top: 130px; /* header maior */
+        padding-top: 150px; /* mais espaço para header maior */
     }
 
     .topo {
@@ -283,11 +268,12 @@ main.container p {
 
     .slideshow {
         width: 100%;
-        max-height: 300px;  /* limite altura no mobile */
+        max-height: 300px;
         margin: 30px 0 20px 0;
     }
 
     .slideshow img {
+        position: absolute;
         width: 100%;
         height: auto;
         object-fit: contain;
@@ -296,15 +282,9 @@ main.container p {
     .products {
         grid-template-columns: 1fr;
         gap: 15px;
-        flex: unset;
-    }
-
-    .shop-wrapper {
-        flex-direction: column;
     }
 
     .cart {
-        margin-left: 0;
         width: 100%;
     }
 
