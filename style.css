@@ -11,12 +11,12 @@
 
 body {
     font-family: "Oswald", sans-serif;
-    background-color: #030303; /* fundo preto */
+    background-color: #030303;
     color: #fff;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-top: 70px; /* espaço para o header fixo */
+    padding-top: 70px; /* espaço para header fixo */
 }
 
 /* cores personalizadas */
@@ -37,7 +37,7 @@ body {
     background: #000;
     color: #fff;
     display: flex;
-    justify-content: space-between; /* logo à esquerda, menu à direita */
+    justify-content: space-between;
     align-items: center;
     padding: 15px 5%;
     z-index: 1000;
@@ -52,18 +52,14 @@ body {
 .topo nav ul {
     display: flex;
     gap: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
 .topo nav ul li a {
     color: #ff06a0;
     font-size: 16px;
-    text-decoration: none;
-    transition: 0.3s;
     padding: 5px 10px;
     border-radius: 5px;
+    transition: 0.3s;
 }
 
 .topo nav ul li a:hover {
@@ -71,60 +67,54 @@ body {
     color: #fff;
 }
 
-/* Seção principal centralizada */
+/* Main container centralizado */
 main.container {
     display: flex;
     flex-direction: column;
-    align-items: center;       /* centraliza horizontalmente */
-    justify-content: center;   /* centraliza verticalmente */
+    align-items: center;
+    justify-content: flex-start;
     text-align: center;
     width: 100%;
-    min-height: calc(100vh - 70px); /* altura total da tela menos header */
+    min-height: calc(100vh - 70px);
     padding: 20px;
 }
 
-/* Ajuste nos títulos e parágrafos */
+/* Títulos e parágrafos */
 main.container h1,
 main.container h2 {
     color: var(--cor-titulo);
-    margin: 0;   /* mais espaçamento */
-    padding: 0;
     font-size: 28px;
-    margin-bottom: 0;
-
+    margin-bottom: 10px;
 }
 
 main.container p {
     color: var(--cor-texto);
-    margin: 3px 0 ;
     font-size: 16px;
     line-height: 1.4;
+    margin: 3px 0;
 }
 
-
-/* Área do logo e botão centralizado */
+/* Área de logo e botão */
 .logo-area {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 20px;
 }
 
-/* Link do logo */
 .logo-area a {
     font-size: 20px;
     font-weight: bold;
     color: var(--cor-titulo);
     text-align: center;
     transition: 0.3s;
-    margin: 3px 0;
 }
 
 .logo-area a:hover {
     color: #fff;
 }
-/* botao */
+
+/* Botão gradiente */
 .btn-gradiente {
     margin-top: 8px;
     padding: 12px 30px;
@@ -138,37 +128,34 @@ main.container p {
     transition: 0.3s;
 }
 
-
 .btn-gradiente:hover {
     opacity: 0.85;
 }
-/* Slideshow centralizado menor */
+
+/* Slideshow centralizado */
 .slideshow {
     width: 80%;
-    max-width: 500px;   /* deixei um pouco maior */
-    height: auto;       /* altura automática */
+    max-width: 500px;
+    height: auto;
     aspect-ratio: 16/9;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.3);
     position: relative;
-    margin: 40px auto 0% auto; /* mais espaço no topo */
+    margin: 40px auto;
 }
 
-
-/* Garantir que as imagens se encaixem sem corte ruim */
 .slideshow img {
     width: 100%;
     height: 100%;
-    object-fit: contain;  /* antes era cover, pode cortar. contain mantém tudo visível */
-    object-position: center;
+    object-fit: contain;
     position: absolute;
     top: 0;
     left: 0;
     opacity: 0;
     animation: fade 12s infinite;
 }
-/* Delay diferente para cada imagem */
+
 .slideshow img:nth-child(1) { animation-delay: 0s; }
 .slideshow img:nth-child(2) { animation-delay: 4s; }
 .slideshow img:nth-child(3) { animation-delay: 8s; }
@@ -179,11 +166,13 @@ main.container p {
     33%, 41% { opacity: 0; }
     100% { opacity: 0; }
 }
+
+/* Produtos em grid */
 .products {
-    flex: 2;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
+    width: 100%;
 }
 
 .product-card {
@@ -228,14 +217,14 @@ main.container p {
     background-color: #ff009d;
 }
 
+/* Carrinho */
 .cart {
-    flex: 1;
     background-color: #000000;
     padding: 15px;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    margin-left: 20px;
-    height: fit-content;
+    width: 100%;
+    margin-top: 20px;
 }
 
 #cart-items {
@@ -265,21 +254,51 @@ main.container p {
     background-color: #128C7E;
 }
 
-/* Títulos de categoria */
-.products h2 {
-    grid-column: 1 / -1;
-    color: #ffffff;
-    margin-bottom: 10px;
-    border-bottom: 2px solid #b10d8a;
-    padding-bottom: 5px;
-}
+/* Footer */
 .footer {
-    text-align: center;      /* centraliza o texto */
-    padding: 20px 0;         /* espaço em cima e embaixo */
-    background-color: #000;  /* fundo preto, igual seu site */
-    color: #fff;             /* texto branco */
-    font-size: 14px;         /* tamanho da fonte */
-    position: relative;      /* se quiser fixar no final da página, use fixed */
-    bottom: 0;               /* só funciona com position: fixed */
-    width: 100%;             /* ocupa toda a largura */
+    text-align: center;
+    padding: 20px 0;
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+    width: 100%;
 }
+
+/* Ajustes responsivos */
+@media screen and (max-width: 768px) {
+    .topo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 5%;
+    }
+
+    .topo nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    main.container h1 {
+        font-size: 1.5rem;
+    }
+
+    .slideshow {
+        width: 100%;
+        height: auto;
+        margin: 20px 0;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .cart {
+        margin-left: 0;
+    }
+
+    .btn-gradiente {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}  
