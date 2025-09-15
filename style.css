@@ -16,7 +16,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-top: 70px; /* espaço para header fixo */
+    padding-top: 90px; /* ajustado para header fixo */
 }
 
 /* cores personalizadas */
@@ -75,7 +75,7 @@ main.container {
     justify-content: flex-start;
     text-align: center;
     width: 100%;
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 90px);
     padding: 20px;
 }
 
@@ -142,7 +142,7 @@ main.container p {
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.3);
     position: relative;
-    margin: 40px auto;
+    margin: 20px auto 40px auto;
 }
 
 .slideshow img {
@@ -167,14 +167,23 @@ main.container p {
     100% { opacity: 0; }
 }
 
+/* Wrapper de produtos e carrinho */
+.shop-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+}
+
 /* Produtos em grid */
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
-    width: 100%;
+    flex: 3;
 }
 
+/* Cards dos produtos */
 .product-card {
     display: flex;
     flex-direction: column;
@@ -223,8 +232,8 @@ main.container p {
     padding: 15px;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    width: 100%;
-    margin-top: 20px;
+    flex: 1;
+    height: fit-content;
 }
 
 #cart-items {
@@ -266,11 +275,16 @@ main.container p {
 
 /* Ajustes responsivos */
 @media screen and (max-width: 768px) {
+
+    body {
+        padding-top: 130px; /* header maior em mobile */
+    }
+
     .topo {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
-        padding: 10px 5%;
+        padding: 15px 5%;
     }
 
     .topo nav ul {
@@ -278,27 +292,34 @@ main.container p {
         gap: 10px;
     }
 
-    main.container h1 {
+    main.container h1,
+    main.container h2 {
         font-size: 1.5rem;
     }
 
     .slideshow {
         width: 100%;
-        height: auto;
-        margin: 20px 0;
+        margin: 30px 0 20px 0;
     }
 
     .products {
         grid-template-columns: 1fr;
         gap: 15px;
+        flex: unset;
+    }
+
+    .shop-wrapper {
+        flex-direction: column;
     }
 
     .cart {
         margin-left: 0;
+        width: 100%;
     }
 
     .btn-gradiente {
         padding: 10px 20px;
         font-size: 14px;
     }
-}  
+}
+
