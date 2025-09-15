@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&family=Oswald:wght@200..700&display=swap');
 
-/* Reset */
+/* Reset e base */
 * {
     margin: 0;
     padding: 0;
@@ -16,7 +16,14 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-top: 100px; /* espaço para topo fixo */
+    padding-top: 110px; /* espaço para topo fixo */
+}
+
+/* Cores e variáveis */
+:root {
+    --cor-titulo: #ff06a8;
+    --cor-texto: #a1a1a1;
+    --degrade-btn: linear-gradient(90deg, #ff00ae, #7c6dff);
 }
 
 /* Header fixo */
@@ -36,8 +43,8 @@ body {
 }
 
 .topo h1 {
-    font-size: 20px;
-    color: #ff06a0;
+    font-size: 22px;
+    color: var(--cor-titulo);
 }
 
 .topo nav ul {
@@ -46,7 +53,7 @@ body {
 }
 
 .topo nav ul li a {
-    color: #ff06a0;
+    color: var(--cor-titulo);
     font-size: 16px;
     padding: 5px 10px;
     border-radius: 5px;
@@ -61,13 +68,13 @@ body {
 /* Slideshow */
 .slideshow {
     width: 90%;
-    max-width: 700px;
+    max-width: 800px;
     aspect-ratio: 16/9;
-    margin: 40px auto 20px auto; /* desce o slideshow */
+    margin: 20px auto;
     position: relative;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 .slideshow img {
@@ -92,69 +99,93 @@ body {
     100% { opacity: 0; }
 }
 
+/* Conteúdo principal */
+main.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Títulos e parágrafos */
+main.container h2 {
+    color: var(--cor-titulo);
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+main.container p {
+    color: var(--cor-texto);
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
 /* Produtos */
 .products {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* dois produtos lado a lado */
+    display: flex;
+    flex-direction: column; /* um embaixo do outro */
     gap: 20px;
     width: 90%;
-    margin: 20px auto;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .product-card {
-    background-color: #fff;
-    color: #000;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
-    align-items: center; /* centraliza conteúdo */
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .product-card h3 {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 10px;
     text-align: center;
 }
 
 .product-card select {
-    width: 80%;
-    padding: 6px;
-    margin-bottom: 10px;
+    width: 60%;
+    padding: 8px;
+    margin-bottom: 15px;
     border-radius: 6px;
     border: 1px solid #ccc;
-    font-size: 1rem;
+    font-size: 16px;
     text-align: center;
 }
 
 .product-card button {
-    padding: 10px;
-    background-color: #128C7E;
+    padding: 10px 20px;
+    background-image: var(--degrade-btn);
     color: #fff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.3s;
+    transition: 0.3s;
 }
 
 .product-card button:hover {
-    background-color: #ff009d;
+    opacity: 0.85;
 }
 
 /* Carrinho */
 .cart {
-    background-color: #000000;
+    background-color: #000;
+    color: #fff;
     padding: 15px;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    flex: 1;
-    height: fit-content;
-    margin: 20px auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
 }
 
 #cart-items {
@@ -165,15 +196,15 @@ body {
 
 #cart-items li {
     padding: 5px 0;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid #fff;
 }
 
 #checkout {
     margin-top: 15px;
-    padding: 10px;
+    padding: 12px;
     width: 100%;
     background-color: #25D366;
-    color: #000000;
+    color: #000;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -197,7 +228,7 @@ body {
 /* Responsivo */
 @media screen and (max-width: 768px) {
     body {
-        padding-top: 120px;
+        padding-top: 130px;
     }
 
     .topo {
@@ -215,21 +246,13 @@ body {
     .slideshow {
         width: 100%;
         max-height: 300px;
-        margin: 20px auto;
-    }
-
-    .slideshow img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
     }
 
     .products {
-        grid-template-columns: repeat(2, 1fr); /* dois produtos lado a lado no celular */
-        gap: 15px;
+        width: 95%;
     }
 
-    .cart {
-        width: 100%;
+    .product-card select {
+        width: 80%;
     }
 }
