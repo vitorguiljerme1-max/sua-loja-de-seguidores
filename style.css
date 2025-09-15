@@ -115,6 +115,31 @@ main.container h2 {
     font-size: 28px;
     margin-bottom: 10px;
 }
+.btn-gradiente {
+    margin-top: 8px;
+    padding: 12px 30px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(270deg, #ff00ae, #7c6dff, #ff00ae);
+    background-size: 600% 600%;
+    animation: gradientAnimation 6s ease infinite;
+    transition: 0.3s;
+}
+
+.btn-gradiente:hover {
+    opacity: 0.85;
+}
+
+/* Animação de gradiente */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
 main.container p {
     color: var(--cor-texto);
