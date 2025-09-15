@@ -16,7 +16,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding-top: 110px; /* espaço suficiente para header fixo */
+    padding-top: 100px; /* espaço para header fixo */
 }
 
 /* cores personalizadas */
@@ -44,7 +44,7 @@ body {
     border-bottom: 1px solid #222;
 }
 
-.topo h1 {
+.topo .logo h1 {
     font-size: 20px;
     color: #ff06a0;
 }
@@ -67,7 +67,7 @@ body {
     color: #fff;
 }
 
-/* Main container centralizado */
+/* Main container */
 main.container {
     display: flex;
     flex-direction: column;
@@ -75,6 +75,7 @@ main.container {
     justify-content: flex-start;
     text-align: center;
     width: 100%;
+    min-height: calc(100vh - 100px);
     padding: 20px;
 }
 
@@ -91,6 +92,26 @@ main.container p {
     font-size: 16px;
     line-height: 1.4;
     margin: 3px 0;
+}
+
+/* Área de logo e botão */
+.logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-area a {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--cor-titulo);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.logo-area a:hover {
+    color: #fff;
 }
 
 /* Botão gradiente */
@@ -115,7 +136,7 @@ main.container p {
 .slideshow {
     width: 80%;
     max-width: 500px;
-    height: auto;
+    aspect-ratio: 16/9;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.3);
@@ -125,8 +146,8 @@ main.container p {
 
 .slideshow img {
     width: 100%;
-    height: auto;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
@@ -214,7 +235,7 @@ main.container p {
 
 #cart-items li {
     padding: 5px 0;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #ffffff;
 }
 
 #checkout {
@@ -246,7 +267,7 @@ main.container p {
 /* Responsivo */
 @media screen and (max-width: 768px) {
     body {
-        padding-top: 150px; /* mais espaço para header maior */
+        padding-top: 140px; /* header maior no mobile */
     }
 
     .topo {
@@ -273,10 +294,9 @@ main.container p {
     }
 
     .slideshow img {
-        position: absolute;
         width: 100%;
-        height: auto;
-        object-fit: contain;
+        height: 100%;
+        object-fit: cover;
     }
 
     .products {
@@ -293,3 +313,4 @@ main.container p {
         font-size: 14px;
     }
 }
+
